@@ -1,0 +1,20 @@
+<%= form_for :conversation, url: :conversations do |f| %>
+  <div class="form-group">
+    <%= f.label :recipients %>
+    <%= f.select(:recipients, User.all.collect {|p| [ p.email, p.id ] }, {}, { multiple: true , class: 'form-control' })%>
+  </div>
+  <div class="form-group">
+    <%= f.label :subject %>
+    <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :message %>
+    <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+  </div>
+  <div class="clearfix">
+    <%= button_tag class: 'btn btn-primary pull-right' do %>
+      <em class="fa fa-paper-plane"></em>
+      Send Message
+    <%- end %>
+  </div>
+<% end %>

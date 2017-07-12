@@ -1,0 +1,20 @@
+<ul class="nav flex-column folders-nav">
+  <li class="nav-item folders-nav-item">
+    <%= link_to mailbox_inbox_path, class: "nav-link folders-nav-link#{@active == :inbox ? ' active folders-nav-link--active' : ''}#{unread_messages_count > 0 ? ' folders-nav-link--unread-messages' : ''}" do  %>
+      <span>Inbox</span>
+      <%- if unread_messages_count > 0 %>
+        <span>(<%= unread_messages_count %>)</span>
+      <%- end %>
+    <% end %>
+  </li>
+  <li class="nav-item folders-nav-item">
+    <%= link_to mailbox_sent_path, class: "nav-link folders-nav-link#{@active == :sent ? ' active folders-nav-link--active' : ''}" do %>
+      <span>Sent</span>
+    <% end %>
+  </li>
+  <li class="nav-item folders-nav-item">
+    <%= link_to mailbox_trash_path, class: "nav-link folders-nav-link#{@active == :trash ? ' active folders-nav-link--active' : ''}" do %>
+      <span>Trash</span>
+    <% end %>
+  </li>
+</ul>

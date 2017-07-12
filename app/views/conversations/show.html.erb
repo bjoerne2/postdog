@@ -1,0 +1,35 @@
+<div class="conversation-messages">
+  <% @receipts.each do |receipt| %>
+    <hr class="message-separator">
+    <div>
+      <div class="message--from"><b>From: </b><%= receipt.message.sender.email %></div>
+      <div class="message--subject"><b>Subject: </b><%= receipt.message.subject %></div>
+      <div class="message--date"><b>Date: </b><%= receipt.message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></div>
+      <div class="message--body"><%= receipt.message.body %></div>
+    </div>
+  <% end %>
+</div>
+<% unless conversation.is_trashed?(current_user) %>
+  <%= form_for :message, url: reply_conversation_path(conversation), html: { class: 'reply-form clearfix' } do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+      </div>
+      <%= button_tag class: 'btn btn-primary pull-right' do %>
+        <em class="fa fa-paper-plane"></em>
+        Reply
+      <%- end %>
+  <% end %>
+<% end %>
+<div class="clearfix">
+  <% if conversation.is_trashed?(current_user) %>
+      <%= link_to untrash_conversation_path(conversation), class: 'btn btn-secondary pull-right', method: :post do %>
+        <em class="fa fa-undo"></em>
+        Untrash
+      <%- end %>
+  <% else %>
+      <%= link_to trash_conversation_path(conversation), class: 'btn btn-secondary pull-right', method: :post, data: {confirm: 'Are you sure?'} do %>
+        <em class="fa fa-trash"></em>
+        Move to trash
+      <%- end %>
+  <% end %>
+</div>

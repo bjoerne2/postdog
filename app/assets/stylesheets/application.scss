@@ -20,6 +20,10 @@
   margin-bottom: 2em;
 }
 
+.current-user {
+  margin-right: 10px;
+}
+
 .sign-out {
   text-align: right;
   margin-bottom: 1em;
@@ -27,4 +31,56 @@
 
 .field, .actions {
   margin-bottom: 1em;
+}
+
+.folders-nav {
+  margin-bottom: 1em;
+}
+
+.folders-nav-link {
+  color: $gray-light;
+}
+
+.folders-nav-link--active {
+  color: $brand-primary;
+}
+
+.compose-btn {
+  margin-bottom: 1em;
+}
+
+.folders-nav-link--unread-messages {
+  font-weight: bold;
+}
+
+.reply-form {
+  margin-bottom: 1em;
+}
+
+.message-link {
+  display: block;
+  margin: -.5em -.5em -1em -.5em;
+  padding: .5em;
+  &, &:hover, &:active, &:focus {
+    color: $gray-dark;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: #f8f8f8;
+  }
+}
+
+.message--body {
+  margin-top: .5em;
+}
+
+.message-separator {
+  margin: 2em 0 1em;
+  &:first-of-type {
+    display: none;
+  }
+}
+
+.conversation-messages {
+  margin-bottom: 2em;
 }

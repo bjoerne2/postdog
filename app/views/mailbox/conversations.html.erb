@@ -1,0 +1,5 @@
+<%- if @conversations.any? %>
+  <%= render partial: 'conversation', collection: @conversations %>
+<%- else %>
+  <div><i>No conversations found.</i></div>
+<%- end %>

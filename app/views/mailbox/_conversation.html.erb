@@ -1,0 +1,7 @@
+<hr class="message-separator">
+<%= link_to conversation_path(conversation), class: 'message-link' do %>
+  <div class="message--from"><b>From: </b><%= conversation.participants.map { |participant| participant.email }.uniq.join(', ') %><%= conversation.count_messages > 1 ? " (#{conversation.count_messages})" : '' %></div>
+  <div class="message--subject"><b>Subject: </b><%= conversation.subject %></div>
+  <div class="message--date"><b>Date: </b><%= conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></div>
+  <div class="message--body"><%= truncate conversation.messages.last.body, length: 145 %></div>
+<%- end %>
