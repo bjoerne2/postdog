@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MessagingExample</title>
+    <title>Messaging Example</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <div class="page container">
       <%- if user_signed_in? %>
         <div class="sign-out">
-          <span class="current-user"><%= current_user.email %></span>
+          <%= link_to current_user.email, edit_user_registration_path, class: 'current-user' %>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
         </div>
       <%- end %>
