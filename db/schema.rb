@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711205441) do
+ActiveRecord::Schema.define(version: 20170712102045) do
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string "unsubscriber_type"
@@ -49,22 +49,8 @@ ActiveRecord::Schema.define(version: 20170711205441) do
     t.index ["type"], name: "index_mailboxer_notifications_on_type"
   end
 
-  create_table "mailboxer_receipts", force: :cascade do |t|
-    t.string "receiver_type"
-    t.integer "receiver_id"
-    t.integer "notification_id", null: false
-    t.boolean "is_read", default: false
-    t.boolean "trashed", default: false
-    t.boolean "deleted", default: false
-    t.string "mailbox_type", limit: 25
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_delivered", default: false
-    t.string "delivery_method"
-    t.string "message_id"
-    t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
-    t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
-  end
+# Could not dump table "mailboxer_receipts" because of following StandardError
+#   Unknown type 'String' for column 'token'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
