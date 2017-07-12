@@ -1,15 +1,18 @@
-<%= form_for :conversation, url: :conversations do |f| %>
-  <div class="form-group">
-    <%= f.label :recipients %>
+<%= form_for @conversation_transient_model, url: :conversations do |f| %>
+  <div class="form-group<%= @conversation_transient_model.errors.include?(:recipients) ? ' has-danger' : '' %>">
+    <%= f.label :recipients, class: 'form-control-label' %>
     <%= f.select(:recipients, User.all.select { |p| p != current_user }.collect {|p| [ p.email, p.id ] }, {}, { multiple: true , class: 'form-control' })%>
+    <%- if @conversation_transient_model.errors.include?(:recipients) %><div class="form-control-feedback"><%= @conversation_transient_model.errors[:recipients][0] %></div><%- end %>
   </div>
-  <div class="form-group">
-    <%= f.label :subject %>
+  <div class="form-group<%= @conversation_transient_model.errors.include?(:subject) ? ' has-danger' : '' %>">
+    <%= f.label :subject, class: 'form-control-label' %>
     <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>
+    <%- if @conversation_transient_model.errors.include?(:subject) %><div class="form-control-feedback"><%= @conversation_transient_model.errors[:subject][0] %></div><%- end %>
   </div>
-  <div class="form-group">
-    <%= f.label :message %>
-    <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+  <div class="form-group<%= @conversation_transient_model.errors.include?(:body) ? ' has-danger' : '' %>">
+    <%= f.label :body, 'Message', class: 'form-control-label' %>
+    <%= f.text_area :body, class: 'form-control', placeholder: "Type your message here", rows: 4  %>
+    <%- if @conversation_transient_model.errors.include?(:body) %><div class="form-control-feedback"><%= @conversation_transient_model.errors[:body][0] %></div><%- end %>
   </div>
   <div class="clearfix">
     <%= button_tag class: 'btn btn-primary pull-right' do %>

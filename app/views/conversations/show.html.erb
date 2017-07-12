@@ -10,9 +10,10 @@
   <% end %>
 </div>
 <% unless conversation.is_trashed?(current_user) %>
-  <%= form_for :message, url: reply_conversation_path(conversation), html: { class: 'reply-form clearfix' } do |f| %>
-      <div class="form-group">
+  <%= form_for @message_transient_model, url: reply_conversation_path(conversation), html: { class: 'reply-form clearfix' } do |f| %>
+      <div class="form-group<%= @message_transient_model.errors.include?(:body) ? ' has-danger' : '' %>">
         <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+        <%- if @message_transient_model.errors.include?(:body) %><div class="form-control-feedback"><%= @message_transient_model.errors[:body][0] %></div><%- end %>
       </div>
       <%= button_tag class: 'btn btn-primary pull-right' do %>
         <em class="fa fa-paper-plane"></em>
