@@ -4,7 +4,7 @@ namespace :messaging_example do
     expected_local_part_prefix, expected_host = ENV['MAILBOXER_DEFAULT_FROM'].split('@')
     expected_email_pattern_in_text = "#{expected_local_part_prefix}-(.*)@#{expected_host}"
     expected_email_pattern = "^#{expected_email_pattern_in_text}$"
-    Mail.all(delete_after_find: false).each do |mail|
+    Mail.all(delete_after_find: true).each do |mail|
       body = mail.text_part.body.to_s.chomp
       body_without_signature = ''
       body.each_line do |line|
