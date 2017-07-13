@@ -1,3 +1,11 @@
+<%- if @empty_trash_enabled %>
+  <div class="clearfix">
+    <%= link_to empty_mailbox_trash_path, class: 'btn btn-secondary pull-right', method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <em class="fa fa-trash"></em>
+      Empty trash
+    <%- end %>
+  </div>
+<%- end %>
 <%- if @conversations.any? %>
   <%= render partial: 'conversation', collection: @conversations %>
 <%- else %>
