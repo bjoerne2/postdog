@@ -5,7 +5,7 @@
       <div class="message--from"><b>From: </b><%= receipt.message.sender.email %></div>
       <div class="message--subject"><b>Subject: </b><%= receipt.message.subject %></div>
       <div class="message--date"><b>Date: </b><%= receipt.message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></div>
-      <div class="message--body"><%= receipt.message.body %></div>
+      <div class="message--body"><%= simple_format(receipt.message.body) %></div>
     </div>
   <% end %>
 </div>
