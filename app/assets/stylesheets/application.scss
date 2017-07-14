@@ -21,7 +21,11 @@
 }
 
 .logo {
+  display: inline-block;
   margin-bottom: 2em;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
 }
 
 .logo__paw {

@@ -12,10 +12,10 @@
     <div class="page container">
       <div class="row">
         <div class="col-md-6">
-          <div class="logo">
+          <%= link_to root_path, class: 'logo' do %>
             <%= image_tag 'paw.svg', class: 'logo__paw' %>
             <span class="logo__text">postdog</span>
-          </div>
+          <%- end %>
         </div>
         <div class="col-md-6">
           <%- if user_signed_in? %>
