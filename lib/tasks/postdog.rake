@@ -1,4 +1,4 @@
-namespace :messaging_example do
+namespace :postdog do
   desc "Receives email via mail library"
   task receive_mails: :environment do
     expected_local_part_prefix, expected_host = ENV['MAILBOXER_DEFAULT_FROM'].split('@')
