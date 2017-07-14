@@ -5,16 +5,27 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Karla:700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="page container">
-      <%- if user_signed_in? %>
-        <div class="sign-out">
-          <%= link_to current_user.email, edit_user_registration_path, class: 'current-user' %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="logo">
+            <%= image_tag 'paw.svg', class: 'logo__paw' %>
+            <span class="logo__text">postdog</span>
+          </div>
         </div>
-      <%- end %>
+        <div class="col-md-6">
+          <%- if user_signed_in? %>
+            <div class="sign-out">
+              <%= link_to current_user.email, edit_user_registration_path, class: 'current-user' %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+            </div>
+          <%- end %>
+        </div>
+      </div>
       <%- unless content_for?(:content) %>
         <% flash.each do |key, value| %>
             <div class="<%= flash_class(key) %>">

@@ -20,13 +20,30 @@
   margin-bottom: 2em;
 }
 
+.logo {
+  margin-bottom: 2em;
+}
+
+.logo__paw {
+  width: 37px;
+  transform: rotate(-34deg);
+  vertical-align: text-bottom;
+}
+
+.logo__text {
+  font-family: 'Karla', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #88B04B;
+}
+
 .current-user {
   margin-right: 10px;
 }
 
 .sign-out {
   text-align: right;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .field, .actions {
