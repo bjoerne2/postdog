@@ -38,4 +38,13 @@ namespace :postdog do
       end
     end
   end
+
+  desc "Cleans up old data. This is used in demo mode"
+  task clean_up: :environment do
+    threshold = DateTime.now() - 1.day
+    Mailboxer::Receipt.where('updated_at < ?', threshold).destroy_all
+    Mailboxer::Notification.where('updated_at < ?', threshold).where.not(id: Mailboxer::Receipt.select('notification_id')).destroy_all
+    Mailboxer::Conversation.where('updated_at < ?', threshold).where.not(id: Mailboxer::Notification.select('conversation_id')).destroy_all
+    User.where('last_sign_in_at < ?', threshold).where.not(id: Mailboxer::Notification.select('sender_id')).where.not(id: Mailboxer::Receipt.select('receiver_id')).destroy_all
+  end
 end
