@@ -1,4 +1,4 @@
-class ConversationsController < ApplicationController
+class ConversationsController < ProtectedController
 
   layout 'messages'
 

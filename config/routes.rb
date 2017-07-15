@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: redirect('/inbox')
+  root to: 'home#index'
 
   devise_for :users
 

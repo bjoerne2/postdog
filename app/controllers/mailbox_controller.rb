@@ -1,4 +1,4 @@
-class MailboxController < ApplicationController
+class MailboxController < ProtectedController
 
   layout 'messages'
 
